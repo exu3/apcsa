@@ -1,1 +1,1 @@
-kareljrobot program that draws a diamond with beepers
+kareljrobot thing that draws a diamond with beepers
