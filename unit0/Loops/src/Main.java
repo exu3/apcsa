@@ -13,7 +13,7 @@ public class Main{
 
     // for loop
     for (int i = 1; i<=10; i++) {
-      System.out.print(i);
+      System.out.print(i+ ",");
     }
     System.out.println();
     System.out.println();
@@ -21,7 +21,7 @@ public class Main{
     // while loop
     int ii = 1;
     while (ii <=10) { 
-      System.out.print(ii);
+      System.out.print(ii+ ",");
       ii++;
     }
     System.out.println();
@@ -30,7 +30,7 @@ public class Main{
     //2 - print all the even integers between 1 and 1001
     // for loop
     for (int x=2; x<1001; x+=2) {
-      System.out.print(x);
+      System.out.print(x + ",");
     }
     System.out.println();
     System.out.println();
@@ -38,7 +38,7 @@ public class Main{
     // while loop 
     int xx=2;
     while (xx<1001) {
-      System.out.print(xx);
+      System.out.print(xx + ",");
       xx+=2;
     }
     System.out.println();
@@ -49,7 +49,7 @@ public class Main{
     // for loop
       for (int n = 99; n>=3; n-- ) {
         if ( n%3 == 0 ) {
-          System.out.print(n);
+          System.out.print(n + ",");
         }
     }
     System.out.println();
@@ -60,7 +60,7 @@ public class Main{
     int nn = 99;
     while (nn>=3) {
       if ( nn%3 == 0 ) {
-          System.out.print(nn);
+          System.out.print(nn + ",");
         } 
       nn--;
     }
