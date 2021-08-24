@@ -20,7 +20,10 @@ public class Main{
     }
 
     //3 - print all numbers divisible by 3, starting at 99, going from largest to smallest.
-    for (int n = 99; n%3 == 0 && n>=3; n-- )
-      System.out.println(n);
+    for (int n = 99; n>=3; n-- ) {
+      if ( n%3 == 0 ) {
+        System.out.println(n);
+      }
   }
+}
 }
