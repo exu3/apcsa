@@ -1,0 +1,1 @@
+run = "clear && javac -cp ./jars/KarelJRobot.jar: Main.java && java -cp ./jars/KarelJRobot.jar: Main"
