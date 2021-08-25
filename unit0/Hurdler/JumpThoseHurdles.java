@@ -10,12 +10,15 @@ public class JumpThoseHurdles {
 
 	public void start() {
 		loadWorld();
-		
+		// hardcoded do three hurdles for now
+		for (int i = 1; i<=3; i++) {
 		int w = findHurdle();
 		int h = climbHurdle();
 		clearHurdle();
+		}
 		
 	}
+
 
 	/**
 	 * This method assumes the Robot is named hurdler and is facing East
@@ -23,18 +26,33 @@ public class JumpThoseHurdles {
 	 * of moves it took to get to the hurdle
 	 */
 	private int findHurdle() {
+	
+		while (hurdler.frontIsClear()) {
+			hurdler.move();
+		}
 
 		return 0;
 	}
 	/**
-	 * This method assumes the Robot is named hurdler, is facing East and
+	 * This method assume2s the Robot is named hurdler, is facing East and
 	 * is at the base of the hurdle. 
 	 * This moves the Robot to the top of the hurdle so that it can clear
 	 * the wall.  
 	 * @return The number of steps to get above the hurdle (height)
 	 */
 	private int climbHurdle() {
-		
+	
+		while (hurdler.frontIsClear() == false) {
+			hurdler.turnLeft();
+			hurdler.move();
+			hurdler.turnLeft();
+			hurdler.turnLeft();
+			hurdler.turnLeft();
+		}
+		if (hurdler.frontIsClear()) {
+			hurdler.move();
+		}
+	
 		return 0;
 	}
 
@@ -43,7 +61,13 @@ public class JumpThoseHurdles {
 	 * that the Robot has its back to the hurdle and is facing the next one.
 	 */
 	private void clearHurdle() {
-		// TODO Auto-generated method stub
+		hurdler.turnLeft();
+		hurdler.turnLeft();
+		hurdler.turnLeft();
+		while (hurdler.frontIsClear()) {
+			hurdler.move();
+		}
+		hurdler.turnLeft();
 		
 	}
 
@@ -53,7 +77,7 @@ public class JumpThoseHurdles {
 		String worldName = "worlda.wld";
 		World.readWorld(worldName);
 		World.setVisible(true);
-		World.setDelay(5);
+		World.setDelay(20);
 	}
 
 }
