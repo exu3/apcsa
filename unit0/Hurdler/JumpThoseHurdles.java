@@ -10,15 +10,23 @@ public class JumpThoseHurdles {
 
 	public void start() {
 		loadWorld();
-		// hardcoded do three hurdles for now
-		for (int i = 1; i<=3; i++) {
-		int w = findHurdle();
-		int h = climbHurdle();
-		clearHurdle();
+		while (hurdler.nextToABeeper() == false) {
+			int w = findHurdle();
+			int h = climbHurdle();
+			clearHurdle();
 		}
-		
+		if (hurdler.nextToABeeper()) {
+			System.out.println("cleared all the hurdles");
+		}
 	}
+	// for comparing the heights, set to variables, a recent height and a max height. the max 
+	// height should update if the recent height is greater. return the max height at the end.
 
+	public void turnRight() {
+		hurdler.turnLeft();
+		hurdler.turnLeft();
+		hurdler.turnLeft();
+	}
 
 	/**
 	 * This method assumes the Robot is named hurdler and is facing East
@@ -26,12 +34,15 @@ public class JumpThoseHurdles {
 	 * of moves it took to get to the hurdle
 	 */
 	private int findHurdle() {
+		int distance = 0;
 	
 		while (hurdler.frontIsClear()) {
 			hurdler.move();
+			distance++;
 		}
+		System.out.println("the distance is " + distance + " units");
 
-		return 0;
+		return distance;
 	}
 	/**
 	 * This method assume2s the Robot is named hurdler, is facing East and
@@ -41,19 +52,19 @@ public class JumpThoseHurdles {
 	 * @return The number of steps to get above the hurdle (height)
 	 */
 	private int climbHurdle() {
+		int height = 0;
 	
 		while (hurdler.frontIsClear() == false) {
 			hurdler.turnLeft();
 			hurdler.move();
-			hurdler.turnLeft();
-			hurdler.turnLeft();
-			hurdler.turnLeft();
+			turnRight();
+			height++;
 		}
 		if (hurdler.frontIsClear()) {
 			hurdler.move();
 		}
-	
-		return 0;
+		System.out.println("the hurdle is " + height + " units tall");
+		return height;
 	}
 
 	/** 
@@ -61,9 +72,7 @@ public class JumpThoseHurdles {
 	 * that the Robot has its back to the hurdle and is facing the next one.
 	 */
 	private void clearHurdle() {
-		hurdler.turnLeft();
-		hurdler.turnLeft();
-		hurdler.turnLeft();
+		turnRight();
 		while (hurdler.frontIsClear()) {
 			hurdler.move();
 		}
@@ -74,10 +83,10 @@ public class JumpThoseHurdles {
 	private void loadWorld() {
 		// line below "hardcodes" this to use one specific world
 		// it would be better to ask the user...
-		String worldName = "worlda.wld";
+		String worldName = "worldc.wld";
 		World.readWorld(worldName);
 		World.setVisible(true);
-		World.setDelay(20);
+		World.setDelay(10);
 	}
 
 }
