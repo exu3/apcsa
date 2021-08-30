@@ -1,7 +1,7 @@
 import kareltherobot.*;
 
 public class JumpThoseHurdles {
-	// This is the Robot we will use to jump the hurdles
+	// This is the Robot we will use to jump the hurdless
 	Robot hurdler = new Robot(1,1,Directions.East, 0);
 	
 	public static void main(String[] args) {
