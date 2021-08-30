@@ -10,13 +10,25 @@ public class JumpThoseHurdles {
 
 	public void start() {
 		loadWorld();
+		int maxHeight = 0;
+		int minWidth = 9999;
 		while (hurdler.nextToABeeper() == false) {
 			int w = findHurdle();
 			int h = climbHurdle();
 			clearHurdle();
+
+			if (h > maxHeight) {
+				maxHeight = h;
+			}
+			
+			if (w < minWidth) {
+				minWidth = w;
+			}
 		}
+		System.out.println("The tallest hurdle is "+ maxHeight + " units tall.");
+		System.out.println("The shortest distance between hurdles is " + minWidth + " units.");
 		if (hurdler.nextToABeeper()) {
-			System.out.println("cleared all the hurdles");
+			System.out.println("yay 🎉");
 		}
 	}
 	// for comparing the heights, set to variables, a recent height and a max height. the max 
@@ -40,7 +52,7 @@ public class JumpThoseHurdles {
 			hurdler.move();
 			distance++;
 		}
-		System.out.println("the distance is " + distance + " units");
+		// System.out.println("the distance is " + distance + " units");
 
 		return distance;
 	}
@@ -63,7 +75,8 @@ public class JumpThoseHurdles {
 		if (hurdler.frontIsClear()) {
 			hurdler.move();
 		}
-		System.out.println("the hurdle is " + height + " units tall");
+		
+		// System.out.println("the hurdle is " + height + " units tall");
 		return height;
 	}
 
@@ -83,10 +96,10 @@ public class JumpThoseHurdles {
 	private void loadWorld() {
 		// line below "hardcodes" this to use one specific world
 		// it would be better to ask the user...
-		String worldName = "worldc.wld";
+		String worldName = "worldd.wld";
 		World.readWorld(worldName);
 		World.setVisible(true);
-		World.setDelay(10);
+		World.setDelay(0);
 	}
 
 }
