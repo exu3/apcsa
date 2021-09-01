@@ -1,6 +1,6 @@
-import java.util.Scanner;
+// import java.util.Scanner;
 
-import javax.swing.JOptionPane;
+// import javax.swing.JOptionPane;
 
 import kareltherobot.*;
 
@@ -17,14 +17,52 @@ public class Driver implements Directions {
 		// LEAVE THIS ALONE!!!!!!
 		Driver d = new Driver();
 		d.getInfo();
+		d.scanRoom();
 		d.cleanRoom();
 		d.displayResults();
+	}
+
+	public void turnRight() {
+		roomba.turnLeft();
+		roomba.turnLeft();
+		roomba.turnLeft();
+	}
+
+	private int scanRoom() {
+		for (int i = 0; i<3; i++) {
+		while (roomba.frontIsClear()) {
+			roomba.move();
+			collectBeeper();
+		}
+		turnRight();
+		roomba.move();
+		turnRight();
+		while (roomba.frontIsClear()) {
+			roomba.move();
+			collectBeeper();
+		}
+		roomba.turnLeft();
+		roomba.move();
+		roomba.turnLeft();
+	}
+
+		return 0;
+	}
+
+	private int collectBeeper() {
+		if (roomba.nextToABeeper()) {
+			while (roomba.nextToABeeper()) {
+				roomba.pickBeeper();
+			}
+		}
+		return 0;
 	}
 
 	/**
 	 * This method gets info from the user in the following order: 1. Ask the user
 	 * which world file they wish to process. Right now, that world file name is
-	 * hardcoded in. 2. Ask the user for the starting location and direction of the
+	 * hardcoded in. 
+	 * 2. Ask the user for the starting location and direction of the
 	 * Robot. A new Robot should be constructed and assigned to the global
 	 * (instance) variable named roomba that is declared on line 10.
 	 * 
@@ -34,11 +72,14 @@ public class Driver implements Directions {
 	 * JOptionPane.
 	 */
 	private void getInfo() {
-
+		int yPosition = 11;
+		int xPosition = 6;
+		roomba = new Robot(yPosition, xPosition, Directions.East, 0);
 		String wrldName = "basicRoom.wld";
 
 		World.readWorld(wrldName);
 		World.setVisible(true);
+		World.setDelay(5);
 
 	}
 
@@ -61,6 +102,16 @@ public class Driver implements Directions {
 	private void displayResults() {
 		
 		System.out.println("The biggest pile was ");
+		// JOptionPane.showMessageDialog(frame, "Eggs are not supposed to be green.");
 	}
 
 }
+
+// Information to return to the user
+// • Area of room
+// • Number of piles
+// • Total number of beepers
+// • Largest pile of beepers
+// • Location (relative) of the largest pile
+// • average pile size
+// • percent dirty (piles/area)
