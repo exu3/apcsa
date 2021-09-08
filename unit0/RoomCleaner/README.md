@@ -7,13 +7,13 @@ the robot's initial state.
 
 Information to be reported back to user:
 
-- Area of room
-- Number of piles
-- Total number of beepers
-- Largest pile of beepers
-- Location (relative) of the largest pile
-- average pile size
-- percent dirty (piles/area)
+- [] Area of room
+- [] Number of piles
+- [] Total number of beepers
+- [] Largest pile of beepers
+- [] Location (relative) of the largest pile
+- [] average pile size
+- [] percent dirty (piles/area)
 
 I have provided a template and a world to test. Because we are at the initial stages of learning to
 program and test, I am providing the test world. It is a good idea to consider the test cases that
