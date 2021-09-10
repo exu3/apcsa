@@ -13,6 +13,8 @@ public class Driver implements Directions {
 	int sumBeepers = 0;
 	int beeperPiles = 0;
 	int locLargestPile = 0;
+	int pileSize = 0;
+	int maxPileSize = 0;
 
 	// You will add very many variables!!
 
@@ -42,12 +44,12 @@ public class Driver implements Directions {
 		
 		while (roomba.frontIsClear()) {
 
+		
+
 			while (roomba.frontIsClear()) {
 				roomba.move();
 				collectBeeper();
-				roomCols++;
 			}
-
 			turnRight();
 
 			if (roomba.frontIsClear()) {
@@ -55,12 +57,11 @@ public class Driver implements Directions {
 				roomba.move();
 				roomRows++;
 				turnRight();
-			} 
+			}
 
 			while (roomba.frontIsClear()) {
 				roomba.move();
 				collectBeeper();
-				roomCols++;
 			}
 
 			roomba.turnLeft();
@@ -68,18 +69,18 @@ public class Driver implements Directions {
 			if (roomba.frontIsClear()) {
 				System.out.println("The front is clear, let's moooove");
 				roomba.move();
+				roomRows++;
 				roomba.turnLeft();
 			}
 	}
+		System.out.println("roomcols" + roomCols + "yhhh" + roomRows + "roomrows");
 		roomSize = roomCols * roomRows;
 		return roomSize;
 	}
 
 
-
 	// if the robot is next to a beeper, collect them until there are none left
 	private int collectBeeper() {
-		
 		// int largestPile = 0;
 		pileCounter();
 		if (roomba.nextToABeeper()) {
@@ -161,7 +162,9 @@ public class Driver implements Directions {
 	 */
 	private void displayResults() {
 		int avg = sumBeepers / beeperPiles;
-		// int percentDirty = beeperPiles / roomSize;
+		// typecasting: temporarily convert the type to a float or double
+		double fractionDirty = (double)beeperPiles / roomSize;
+		double percentDirty = fractionDirty * 100;
 		
 		System.out.println(" The biggest pile was ");
 		System.out.println(" The area of the room is " + roomSize + " square units");
@@ -169,7 +172,7 @@ public class Driver implements Directions {
 		System.out.println("✅ The total number of beepers is " + sumBeepers);
 		System.out.println(" The location of the largest pile is ");
 		System.out.println("✅ The average pile size is " + avg);
-		System.out.println("The percentage of dirty piles is " + "placeholder");
+		System.out.println("The percentage of dirty piles is " + percentDirty + "%");
 	}
 
 }
