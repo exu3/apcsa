@@ -7,23 +7,26 @@ public class Driver implements Directions {
 // declared here so it is visible in all the methods!! 
 // It will be assigned a value in the getInfo method
 	Robot roomba; 
+	int roomCols = 0;
+	int roomRows = 0;
 	int roomSize = 0;
 	int sumBeepers = 0;
 	int beeperPiles = 0;
+	int locLargestPile = 0;
 
 	// You will add very many variables!!
 
 	// set row and column row++ and row-- depending on the direction
 	// the robot is moving in
 	// store row and column number of the biggest pile int he if (#> big) statement
-
 	
 	public static void main(String[] args) {
 		// LEAVE THIS ALONE!!!!!!
 		Driver d = new Driver();
 		d.getInfo();
 		d.scanRoom();
-		d.cleanRoom();
+		// d.cleanRoom();
+		d.collectBeeper();
 		d.displayResults();
 	}
 
@@ -38,29 +41,37 @@ public class Driver implements Directions {
 	private int scanRoom() {
 		
 		while (roomba.frontIsClear()) {
-		while (roomba.frontIsClear()) {
-			roomba.move();
-			collectBeeper();
-		}
-		turnRight();
-		if (roomba.frontIsClear()) {
-			System.out.println("The front is clear, let's moooove");
-			roomba.move();
+
+			while (roomba.frontIsClear()) {
+				roomba.move();
+				collectBeeper();
+				roomCols++;
+			}
+
 			turnRight();
-		} 
-		while (roomba.frontIsClear()) {
-			roomba.move();
-			collectBeeper();
-			// roomSize++;
-		}
-		roomba.turnLeft();
-		if (roomba.frontIsClear()) {
-			System.out.println("The front is clear, let's moooove");
-			roomba.move();
-			roomSize++;
+
+			if (roomba.frontIsClear()) {
+				System.out.println("The front is clear, let's moooove");
+				roomba.move();
+				roomRows++;
+				turnRight();
+			} 
+
+			while (roomba.frontIsClear()) {
+				roomba.move();
+				collectBeeper();
+				roomCols++;
+			}
+
 			roomba.turnLeft();
-		}
+
+			if (roomba.frontIsClear()) {
+				System.out.println("The front is clear, let's moooove");
+				roomba.move();
+				roomba.turnLeft();
+			}
 	}
+		roomSize = roomCols * roomRows;
 		return roomSize;
 	}
 
@@ -70,15 +81,22 @@ public class Driver implements Directions {
 	private int collectBeeper() {
 		
 		// int largestPile = 0;
+		pileCounter();
 		if (roomba.nextToABeeper()) {
-			System.out.println("yeeeeet it's a new beeper pile");
-			beeperPiles++;
 			while (roomba.nextToABeeper()) {
 				roomba.pickBeeper();
 				sumBeepers++;
 			}
 		}
 		return sumBeepers;
+	}
+
+	private int pileCounter() {
+		if (roomba.nextToABeeper()) {
+			System.out.println("yeeeeet it's a new beeper pile");
+			beeperPiles++;
+		}
+		return beeperPiles;
 	}
 
 
@@ -99,6 +117,7 @@ public class Driver implements Directions {
 	private void getInfo() {
 		// int yPosition = 11;
 		// int xPosition = 6;
+		// robot should start at 100, 4 for test world
 
 		// takes user input for x and y starting coordinates
 		Scanner myObj = new Scanner(System.in);
@@ -141,14 +160,16 @@ public class Driver implements Directions {
 	 * this info in the console (boring) or you can present using JOptionPane (cool!)
 	 */
 	private void displayResults() {
+		int avg = sumBeepers / beeperPiles;
+		// int percentDirty = beeperPiles / roomSize;
 		
-		System.out.println("The biggest pile was ");
-		System.out.println("The area of the room is " + roomSize + " square units");
-		System.out.println("The total number of piles is " + " piles");
-		// System.out.println("The total number of beepers is " + sumBeepers);
-		System.out.println("The location of the largest pile is ");
-		System.out.println("The average pile size is ");
-		System.out.println("The percentage of dirty piles is ");
+		System.out.println(" The biggest pile was ");
+		System.out.println(" The area of the room is " + roomSize + " square units");
+		System.out.println("✅ The total number of piles is " + beeperPiles + " piles");
+		System.out.println("✅ The total number of beepers is " + sumBeepers);
+		System.out.println(" The location of the largest pile is ");
+		System.out.println("✅ The average pile size is " + avg);
+		System.out.println("The percentage of dirty piles is " + "placeholder");
 	}
 
 }
