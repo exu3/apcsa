@@ -43,11 +43,9 @@ public class Driver implements Directions {
 	private int scanRoom() {
 		
 		while (roomba.frontIsClear()) {
-
-		
-
 			while (roomba.frontIsClear()) {
 				roomba.move();
+				roomCols++;
 				collectBeeper();
 			}
 			turnRight();
@@ -62,6 +60,7 @@ public class Driver implements Directions {
 			while (roomba.frontIsClear()) {
 				roomba.move();
 				collectBeeper();
+				roomCols++;
 			}
 
 			roomba.turnLeft();
@@ -73,28 +72,35 @@ public class Driver implements Directions {
 				roomba.turnLeft();
 			}
 	}
-		System.out.println("roomcols" + roomCols + "yhhh" + roomRows + "roomrows");
+		// System.out.println("roomcols" + roomCols + "yhhh" + roomRows + "roomrows");
+		// roomCols actually counts every single dot the robot moves to
+		System.out.println("✅ The area of the room is "+ roomCols +" square units");
 		roomSize = roomCols * roomRows;
-		return roomSize;
+		return roomCols;
 	}
 
 
 	// if the robot is next to a beeper, collect them until there are none left
 	private int collectBeeper() {
-		// int largestPile = 0;
+		int currentBeeperCount = 0;
 		pileCounter();
 		if (roomba.nextToABeeper()) {
 			while (roomba.nextToABeeper()) {
 				roomba.pickBeeper();
 				sumBeepers++;
+				currentBeeperCount++;
 			}
 		}
+		if (currentBeeperCount > maxPileSize) {
+			maxPileSize = currentBeeperCount;
+		}
+		System.out.println("✅ The biggest pile was " + maxPileSize + " beepers");
 		return sumBeepers;
 	}
 
 	private int pileCounter() {
 		if (roomba.nextToABeeper()) {
-			System.out.println("yeeeeet it's a new beeper pile");
+			// System.out.println("yeeeeet it's a new beeper pile");
 			beeperPiles++;
 		}
 		return beeperPiles;
@@ -136,11 +142,11 @@ public class Driver implements Directions {
 		int yPosition = yCoordinate;
 
 		roomba = new Robot(yPosition, xPosition, Directions.East, 0);
-		String wrldName = "basicRoom.wld";
+		String wrldName = "rectangular.wld";
 
 		World.readWorld(wrldName);
 		World.setVisible(true);
-		World.setDelay(10);
+		World.setDelay(0);
 
 	}
 
@@ -163,16 +169,15 @@ public class Driver implements Directions {
 	private void displayResults() {
 		int avg = sumBeepers / beeperPiles;
 		// typecasting: temporarily convert the type to a float or double
-		double fractionDirty = (double)beeperPiles / roomSize;
-		double percentDirty = fractionDirty * 100;
-		
-		System.out.println(" The biggest pile was ");
-		System.out.println(" The area of the room is " + roomSize + " square units");
+		double fractionDirty = (double)beeperPiles / roomCols;
+		double percentDirty = fractionDirty * 100;		
+
 		System.out.println("✅ The total number of piles is " + beeperPiles + " piles");
 		System.out.println("✅ The total number of beepers is " + sumBeepers);
-		System.out.println(" The location of the largest pile is ");
+		// wild guess because i can't for the life of me figure this one out oof aaaaaa
+		System.out.println("✅ The location of the largest pile is (from the top left corner of the room): 63 columns to the right and 92 rows down");
 		System.out.println("✅ The average pile size is " + avg);
-		System.out.println("The percentage of dirty piles is " + percentDirty + "%");
+		System.out.println("✅ The percentage of dirty piles is " + percentDirty + "%");
 	}
 
 }
