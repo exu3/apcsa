@@ -1,0 +1,7 @@
+✅ The area of the room is 7296 square units
+✅ The biggest pile was 95 beepers
+✅ The total number of piles is 18 piles
+✅ The total number of beepers is 992
+✅ The location of the largest pile is (from the top left corner of the room): 63 columns to the right and 92 rows down
+✅ The average pile size is 55
+✅ The percentage of dirty piles is 0.24671052631578946%

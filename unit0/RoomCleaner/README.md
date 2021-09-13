@@ -18,3 +18,7 @@ Information to be reported back to user:
 I have provided a template and a world to test. Because we are at the initial stages of learning to
 program and test, I am providing the test world. It is a good idea to consider the test cases that
 may break your code, and try to test these cases during development.
+
+---
+
+note: `results.txt` are the results I got as of commit `fac0f67851914ead1c548510995014b1af77edca`.
