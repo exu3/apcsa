@@ -1,0 +1,1 @@
+For all the projects in this directory, you'll need a `KarelJRobot.jar` in the root folder to run the code. Download it [here](https://cloud-2liutpdlw-hack-club-bot.vercel.app/0kareljrobot.jar). (You'll need to rename it accordingly).
