@@ -1,3 +1,7 @@
+/**
+ * Activity 1.1.2
+ */
+
 public class Allowance
 {
 	public static void main(String[] args)
