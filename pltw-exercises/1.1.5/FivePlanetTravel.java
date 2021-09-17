@@ -22,14 +22,22 @@ public class FivePlanetTravel
     // total travel time
     double total = 0;
 
+    
+
     /* your code here */
     System.out.println("distance to mercury " + (int)mercury);
-	System.out.println("distance to venus " + (int)venus);
-	System.out.println("distance to mars " + (int)mars);
-	System.out.println("distance to jupiter " + (int)jupiter);
-	System.out.println("distance to saturn " + (int)saturn);
-	// FINISH THIS PART THEN TURN IT IN IDK WHAT I"M DOING AAA"
-    
+	  System.out.println("distance to venus " + (int)venus);
+	  System.out.println("distance to mars " + (int)mars);
+	  System.out.println("distance to jupiter " + (int)jupiter);
+	  System.out.println("distance to saturn " + (int)saturn);
+    total = (mercury + venus + mars + jupiter + saturn)/ lightSpeed;
+
+    double average = (double)total / numPlanets;
+    System.out.println("Average travel time: " + average);
+
+    System.out.println("total distance " + total + " light years");
+
+
     
   }
 }
