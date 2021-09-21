@@ -9,7 +9,7 @@ public class PlanetTravel {
 		int lightSpeed = 670616629;
 		lightSpeed /=10;
 
-		System.out.println("Travel time to Mars: " + mars/lightSpeed + " hours.");
+		System.out.println("Travel time to Mars: " + (double)mars/lightSpeed + " hours.");
 	}
 	
 }
