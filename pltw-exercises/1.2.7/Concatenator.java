@@ -13,3 +13,5 @@ public class Concatenator
         System.out.println(trains.substring(0, 5) + fish.substring(6, fish.length()));
     }
 }
+
+//done 
