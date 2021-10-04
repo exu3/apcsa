@@ -1,1 +1,3 @@
 csawesome stuff
+
+CollegeBored curriculum apparently
