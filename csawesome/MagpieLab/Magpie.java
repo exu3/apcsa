@@ -30,6 +30,22 @@ public class Magpie
 		{
 			response = "Tell me more about your family.";
 		}
+		else if (statement.indexOf("dog") >= 0 || statement.indexOf("cat") >= 0)
+		{
+			response = "Tell me more about your pets.";
+		}
+		else if (statement.toLowerCase().indexOf("sos") >= 0) // if input is not in proper case, it still detects it
+		{
+			response = "He seems like a good teacher.";
+		}
+		else if (statement.trim().length() == 0)
+		{
+			response = "Error: please type something.";
+		}
+		else if (statement.toLowerCase().indexOf("yay") >= 0)
+		{
+			response = "Yay";
+		}
 		else
 		{
 			response = getRandomResponse();
@@ -63,6 +79,10 @@ public class Magpie
 		else if (whichResponse == 3)
 		{
 			response = "You don't say.";
+		}
+		else if (whichResponse == 4)
+		{
+			response = "How thought provoking.";
 		}
 
 		return response;
