@@ -16,15 +16,11 @@ public class Partners
     };
     String[] partners = new String[7];
     // System.out.println(partners[0]);
-    partners[0] = "Orpheus";
     partners[1] = "Scrappy";
-    partners[2] = "Clippy";
-    partners[3] = "Bouncer";
-    partners[4] = "Wahoo Fish";
-    partners[5] = "Hooray Squid";
-    partners[6] = "Netherite Golem";
+    partners[3] = "Wahoo Fish";
+    partners[5] = "Orpheus";
 
-    String[] friendPartners = partners;
+    System.out.println(partners[1]);
   }
 }
 
