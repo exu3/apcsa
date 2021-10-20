@@ -16,16 +16,16 @@ public class SongLab {
 
         // try/catch block to catch file exception not found thing
         try {
-    
+    // use scanner class to count the number of lines, divide by 4, use that number to set the size of the array
 					Scanner in = new Scanner(new File("./songs_new_line.txt"));           
 
 					while (in.hasNextLine()) {
 
-							String title = in.nextLine();
-							String artist = in.nextLine();
-							String year = in.nextLine();
-							String numWords = in.nextLine();
-							System.out.println(title + "\n" + artist + "\n" + year + "\n" + numWords + "\n");
+						String title = in.nextLine();
+						String artist = in.nextLine();
+						String year = in.nextLine();
+						String numWords = in.nextLine();
+						System.out.println(title + "\n" + artist + "\n" + year + "\n" + numWords + "\n");
 											
 					}
         } catch (Exception e) {
