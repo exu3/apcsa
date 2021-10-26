@@ -22,8 +22,8 @@ public class SongLab {
     public static void readData() {
 			String[] titleArray = new String[5100];
 			String[] artistArray = new String[5100];
-			int[] yearArray = new int[5100];
-			int[] wcArray = new int[5100];
+			String[] yearArray = new String[5100];
+			String[] wcArray = new String[5100];
 
 		    int numOfSongs = titleArray.length; // total number of songs
 			int avgWords = 0; // average number of words per song
@@ -38,14 +38,19 @@ public class SongLab {
         // try/catch block to catch file exception not found thing
         try {
 			Scanner in = new Scanner(new File("songs_new_line.txt"));           
-
+			int arrayIndex = 0;
 			while (in.hasNextLine()) {
 
 				String title = in.nextLine();
+				titleArray[arrayIndex] = title;
 				String artist = in.nextLine();
-				String year = in.nextLine();
+				artistArray[arrayIndex] = artist;
+ 				String year = in.nextLine();
+				yearArray[arrayIndex] = year;
 				String numWords = in.nextLine();
-
+				wcArray[arrayIndex] = numWords;
+				
+				arrayIndex++;
 
 				// song with the most # of words
 				if (Integer.parseInt(numWords) > mostWords) {
@@ -67,6 +72,7 @@ public class SongLab {
 				// prints the contents of the file
 				// System.out.println(title + "\n" + artist + "\n" + year + "\n" + numWords + "\n"); 		
 			}
+			System.out.println(titleArray[2] + titleArray[0]);
 
 			// most frequently appearing artist
 			String repeatedArtist = ""; // artist that appears the most number of times
