@@ -33,7 +33,6 @@ public class SongLab {
 			String songMostWords = ""; // song with the most number of words
 			String songLeastWords = ""; // song with the least number of words
 			String longestName = ""; // artist with the longest name
-			String repeatedSong = ""; // song that appears more than once
 
         // try/catch block to catch file exception not found thing
         try {
@@ -78,18 +77,37 @@ public class SongLab {
 			String repeatedArtist = ""; // artist that appears the most number of times
 			int repeatedArtistCount = 0; // times this artist appears
 			
-			// for (int i = 0; i <= artistArray.length-1; i++) {
-			// 	int artistCounter = 0;
-			// 	for (int j = i+1; j <= artistArray.length-2; j++) {
-			// 		if ( artistArray[i].equals(artistArray[j]) ) {
-			// 			artistCounter++;
+			for (int i = 0; i <= artistArray.length-1; i++) {
+				int artistCounter = 0;
+				for (int j = i+1; j <= artistArray.length-2; j++) {
+					if ( artistArray[i].equals(artistArray[j]) ) {
+						artistCounter++;
+					}
+					if ( artistCounter > repeatedArtistCount ) {
+						repeatedArtistCount = artistCounter;
+						repeatedArtist = artistArray[i];
+					}
+				}
+			}
+
+			// most frequently appearing songs
+			String repeatedSong = ""; // song that appears more than once
+			int repeatedSongCount = 0;
+
+			// for (int k = 0; k <= titleArray.length-1; k++) {
+			// 	int songCounter = 0;
+			// 	for (int m = k+1; m <= titleArray.length -2; k++) {
+			// 		if (titleArray[k].equals(titleArray[m])) {
+			// 			songCounter++;
 			// 		}
-			// 		if ( artistCounter > repeatedArtistCount ) {
-			// 			repeatedArtistCount = artistCounter;
-			// 			repeatedArtist = artistArray[i];
+			// 		if (songCounter > repeatedArtistCount) {
+			// 			repeatedSongCount = songCounter;
+			// 			repeatedSong = artistArray[k];
 			// 		}
+					
 			// 	}
 			// }
+			System.out.println(repeatedSongCount);
 
 				// artistArray[numOfSongs] = artist;
 				// titleArray[numOfSongs] = title;
@@ -110,7 +128,7 @@ public class SongLab {
 				System.out.println("Song with the least words:" + songLeastWords + " (with " + leastWords + " word)");
 				System.out.println("Artist with the longest name: " + longestName);
 				System.out.println("Artist appearing the most # of times: " + repeatedArtist + " (appearing " + repeatedArtistCount + " times)");
-				// System.out.println("Songs that appear more than once: " + numOfSongs);
+				System.out.println("Songs that appear more than once: " + repeatedSong + "yes a song repeats");
 	
 
         } catch (Exception e) {
