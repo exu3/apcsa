@@ -26,7 +26,6 @@ public class SongLab {
 			String[] wcArray = new String[5100];
 
 		    int numOfSongs = titleArray.length; // total number of songs
-			int avgWords = 0; // average number of words per song
 			int mostWords = 0;
 			int leastWords = 9999999;
 
@@ -71,7 +70,6 @@ public class SongLab {
 				// prints the contents of the file
 				// System.out.println(title + "\n" + artist + "\n" + year + "\n" + numWords + "\n"); 		
 			}
-			System.out.println(titleArray[2] + titleArray[0]);
 
 			// most frequently appearing artist
 			String repeatedArtist = ""; // artist that appears the most number of times
@@ -91,44 +89,41 @@ public class SongLab {
 			}
 
 			// most frequently appearing songs
-			String repeatedSong = ""; // song that appears more than once
 			int repeatedSongCount = 0;
-
-			// for (int k = 0; k <= titleArray.length-1; k++) {
-			// 	int songCounter = 0;
-			// 	for (int m = k+1; m <= titleArray.length -2; k++) {
-			// 		if (titleArray[k].equals(titleArray[m])) {
-			// 			songCounter++;
-			// 		}
-			// 		if (songCounter > repeatedArtistCount) {
-			// 			repeatedSongCount = songCounter;
-			// 			repeatedSong = artistArray[k];
-			// 		}
-					
-			// 	}
-			// }
+			for (int k = 0; k <= titleArray.length-1; k++) {
+				int songCounter = 0;
+				for (int m = k+1; m <= titleArray.length -2; m++) {
+					if (titleArray[k].equals(titleArray[m])) {
+						songCounter++;
+					}
+					if (songCounter > repeatedSongCount) {
+						repeatedSongCount = songCounter;
+					}
+				}
+			}
 			System.out.println(repeatedSongCount);
-
-				// artistArray[numOfSongs] = artist;
-				// titleArray[numOfSongs] = title;
-				// wcArray[numOfSongs] = title.length();
-
-				// artist with the longest name
-				// String artistLongestName;
-				// for (int i = 0; i < artistArray.length -1; i++) {
-				// 	if ( artistArray[i+1].length() > artistArray[i].length()) {
-				// 		artistLongestName = artistArray[i+1];
-				// 	}
-				// }
+	
+			// average # of words per song 
+			int sumWc = 0;
+			for (int c = 0; c <= wcArray.length-1; c++) {
+				sumWc += Integer.parseInt(wcArray[c]);
+			}
+			// System.out.println(sumWc);
+			double avgWords = sumWc / numOfSongs;
+			
 				
 				// results
 				System.out.println("Total number of songs: " + numOfSongs);
-				// System.out.println("Avg # of words per song: " + numOfSongs);
+				System.out.println("Avg # of words per song: " + avgWords);
 				System.out.println("Song with the most words: " + songMostWords + " (with " + mostWords + " words)");
 				System.out.println("Song with the least words:" + songLeastWords + " (with " + leastWords + " word)");
 				System.out.println("Artist with the longest name: " + longestName);
 				System.out.println("Artist appearing the most # of times: " + repeatedArtist + " (appearing " + repeatedArtistCount + " times)");
-				System.out.println("Songs that appear more than once: " + repeatedSong + "yes a song repeats");
+				if (repeatedSongCount > 1) {
+					System.out.println("Do any songs appear more than once? " + "Yes");
+				} else {
+					System.out.println("No songs appear more than once.");
+				}
 	
 
         } catch (Exception e) {
