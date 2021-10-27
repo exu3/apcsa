@@ -1,8 +1,5 @@
 # Song Lab
 
-## notes:
-- use scanner class to count the number of lines, divide by 4, use that number to set the size of the array
-
 ## GC instructions: 
 
 We will be investigating some of the top songs from 1965 - 2015.
