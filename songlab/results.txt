@@ -1,0 +1,7 @@
+Total number of songs: 5100
+Avg # of words per song: 316.0
+Song with the most words: im a flirt (with 1158 words)
+Song with the least words:the in crowd (with 1 word)
+Artist with the longest name: macklemore and ryan lewis featuring eric nally melle mel kool moe dee and grandmaster caz
+Artist appearing the most # of times: madonna (appearing 34 times)
+Do any songs appear more than once? Yes
