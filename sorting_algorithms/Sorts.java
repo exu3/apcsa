@@ -57,6 +57,20 @@ public class Sorts{
         System.out.println();
         System.out.println("Insertion Sort");
         System.out.println();
+   
+        int i = 1;
+        while(i < list.length)
+        {
+            int x = list[i];
+            int j = i - 1;
+            while(j >= 0 && list[j] > x)
+            {
+            list[j + 1] = list[j];
+            j--;
+            }
+        list[j + 1] = x;
+        i++;
+      }
     }
 
      /**
@@ -69,6 +83,8 @@ public class Sorts{
         System.out.println();
         System.out.println("Insertion Sort");
         System.out.println();
+
+        
     }
     
     /**

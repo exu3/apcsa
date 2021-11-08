@@ -99,7 +99,11 @@ public class SortStep{
     
     myArray = new int[numInts];
 
-    //TODO: create code that will put random numbers between 1 and largestInt, inclusive, into array
+    for (int i = 0; i < numInts; i++) {
+      int randInt = (int)(Math.random()*(largestInt) + 1);
+      System.out.println(randInt);
+      myArray[i] = randInt;
+    }
   }
 
   /**
