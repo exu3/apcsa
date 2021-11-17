@@ -6,7 +6,7 @@ public class Main {
         Person three = new Person();
         
         Person four = new Person("Sandy", 50, true);
-        // Person five = new Person("Joe", false);
+        // Person five = new Person("Joe", false); // cant do this because there's no age int
     }
     
 }
