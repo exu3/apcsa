@@ -62,13 +62,13 @@ public class Sorts{
         while(i < list.length)
         {
             int x = list[i];
-            int j = i - 1;
-            while(j >= 0 && list[j] > x)
+            int y = i - 1;
+            while(y >= 0 && list[y] > x)
             {
-            list[j + 1] = list[j];
-            j--;
+            list[y + 1] = list[y];
+            y--;
             }
-        list[j + 1] = x;
+        list[y + 1] = x;
         i++;
       }
     }
