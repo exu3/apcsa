@@ -17,4 +17,8 @@ public class Person {
 		this.age = age;
 		this.isAlive = isAlive;
 	}
+
+	public String toString() {
+		return name + " - " + age + " - " + isAlive;
+	}
 }
