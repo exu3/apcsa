@@ -1,0 +1,10 @@
+Trigger,1340
+Silver,1210
+Lady,1575
+Patches,1350
+Duke,1410
+Major,1495
+Misty,1425
+Buddy,1340
+Autumn,1460
+Spirit,1295
