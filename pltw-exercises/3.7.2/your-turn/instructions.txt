@@ -1,0 +1,8 @@
+ Import the correct Java package. 
+ Initialize the list with at least three String objects.
+ Display the current list of objects to the user.
+ Type something to add an element to the list.
+ Select a position to add an element at a specific position in the list.
+ Remove an item from the list by position number.
+ Replace an item in the list by position number.
+ Validate input by checking for the size of the list where necessary.
