@@ -13,8 +13,12 @@ public class IrregularPolygon{
   }
 
   // public methods
-  public void add(Point2D.Double aPoint) { }
-  public void draw() { }
+  public void add(Point2D.Double aPoint) {
+    myPolygon.add(aPoint);
+  }
+  public void draw() {
+    myPencil.draw();
+  }
   public double perimeter() { 
     return 0;
   }
