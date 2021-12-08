@@ -19,36 +19,10 @@ public class IrregularPolygon{
   }
   public void draw() {
 
-    myPencil.move(myPolygon.get(0).getX(), myPolygon.get(0).getY());
-    for (int i=0; i<myPolygon.size()-1; i++) {
-      Point2D.Double current = myPolygon.get(i);
-      Point2D.Double next = myPolygon.get(i+1);
-      System.out.println(current.getX());
-      System.out.println(current.getY());
-      double cx = current.getX();
-      double nx = next.getX();
-
-      double cy = current.getY();
-      double ny = next.getY();
-
-      
-
-      if (nx>cx) {
-        myPencil.forward(nx-cx);
-      } else if (nx<cx) {
-        myPencil.backward(cx-nx);
-      } else {
-        // nothing
-      }
-
-      if (ny>cy) {
-        myPencil.forward(ny-cy);
-      } else if (ny<cy) {
-        myPencil.backward(cy-ny);
-      } else {
-        // nothing
-      }
+    for (int i=0; i<myPolygon.size(); i++) {
+      myPencil.move(myPolygon.get(i).getX(), myPolygon.get(i).getY());
     }
+    myPencil.move(myPolygon.get(0).getX(), myPolygon.get(0).getY());
   }
 
   public double perimeter() { 
