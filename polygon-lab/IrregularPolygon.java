@@ -38,12 +38,13 @@ public class IrregularPolygon{
 
       double cy = current.getY();
       double ny = next.getY();
-
+      distance = distance(cx, cy, nx, ny);
       
-      distance = Math.abs(cx-nx) + Math.abs(cy-ny);
+      // distance = Math.abs(cx-nx) + Math.abs(cy-ny);
     }
     return distance;
   }
+
   public double area() { 
     return 0;
   }
