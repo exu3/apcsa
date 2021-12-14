@@ -19,33 +19,35 @@ public class IrregularPolygon{
   }
   public void draw() {
 
-    for (int i=0; i<myPolygon.size(); i++) {
-      myPencil.move(myPolygon.get(i).getX(), myPolygon.get(i).getY());
+    myPencil.up();
+    myPencil.move(myPolygon.get(0).getX(),myPolygon.get(0).getY());
+    myPencil.down();
+    for(int i=1;i<myPolygon.size();i++){
+      myPencil.move(myPolygon.get(i).getX(),myPolygon.get(i).getY());
     }
-    myPencil.move(myPolygon.get(0).getX(), myPolygon.get(0).getY());
+    myPencil.move(myPolygon.get(0).getX(),myPolygon.get(0).getY());
+
+  }
+
+  public double distance(double x1, double y1, double x2, double y2){
+    return Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
   }
 
   public double perimeter() { 
-    double distance = 0;
-
-    for (int i=0; i<myPolygon.size()-1; i++) {
-      Point2D.Double current = myPolygon.get(i);
-      Point2D.Double next = myPolygon.get(i+1);
-      // System.out.println(current.getX());
-      // System.out.println(current.getY());
-      double cx = current.getX();
-      double nx = next.getX();
-
-      double cy = current.getY();
-      double ny = next.getY();
-      distance = distance(cx, cy, nx, ny);
-      
-      // distance = Math.abs(cx-nx) + Math.abs(cy-ny);
+    double perimeter = 0;
+    for (int i =0;i < myPolygon.size()-1;i++){
+      perimeter +=distance(myPolygon.get(i).getX(), myPolygon.get(i).getY(), myPolygon.get(i+1).getX(), myPolygon.get(i+1).getY());
     }
-    return distance;
+    perimeter += distance(myPolygon.get(myPolygon.size()-1).getX(), myPolygon.get(myPolygon.size()-1).getY(),myPolygon.get(0).getX(), myPolygon.get(0).getY() );
+    return perimeter;
   }
 
   public double area() { 
-    return 0;
+    double area = 0;
+    for (int i = 0; i < myPolygon.size()-1; i ++ ){
+      area += ((myPolygon.get(i).getX()*myPolygon.get(i+1).getY())-(myPolygon.get(i+1).getX()*myPolygon.get(i).getY()));
+    }
+    area += ((myPolygon.get(myPolygon.size()-1).getX()*myPolygon.get(0).getY())-(myPolygon.get(0).getX()*myPolygon.get(myPolygon.size()-1).getY()));
+    return Math.abs(area/2);
   }
 }
